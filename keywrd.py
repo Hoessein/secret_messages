@@ -19,27 +19,27 @@ class Keyword(Cipher):
         return keyword_decrypt_dict
 
     def keyword_pad(self):
-        """first i make an empty list and ask the user to enter a keyword
-            then i loop through the prompt and place them in a empty variable "holder"
-            then i loop through "holder" and check if any value in "holder" is in the alphabet_list
-            those items then get removed.
-            In the loop I also append each item in "holder" to encrypted_list_copy
-            and finally extend encrypted_list_copy to alphabet_list"""
+        """prompt the user for an input to use as keyword"""
 
+        #An empty list to append the keyword alphabet to
         encrypted_list_copy = []
+
+        #a copy of the instance variable alphabet_list where I can remove letters from
         a_list = self.alphabet_list[:]
-        print("this is:", a_list)
 
         keyword = input("\nPlease enter a keyword: ")
         holder = ""
 
-        for a in keyword:
-            holder += a
+        for letter in keyword:
+            holder += letter
 
-        for x in holder:
-            if x in a_list:
-                print("remove", a_list.remove(x))
-                print("append", encrypted_list_copy.append(x))
+        #in this part i remove each letter from the users input from a_list
+        #and also append the input to encrypted_list_copy
+        #then extend the remainder of the alphabet list to the encrypted_list_copy
+        for letter in holder:
+            if letter in a_list:
+                a_list.remove(letter)
+                encrypted_list_copy.append(letter)
 
             encrypted_list_copy.extend(a_list)
 
