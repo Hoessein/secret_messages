@@ -36,25 +36,24 @@ class Affine(Cipher):
         print("\nHere is your encryption:", output[:-1])
 
     def decrypt(self):
-        """ prompts user to enter a message
-             for loop: to loop through each input
-             if statement: checks if the input is in the dict's key,
-                 if it is it will append the dict's value to the empty string enc
-             the user is asked to comma separate their input
-             otherwise there's no way to distinguish double digit numbers
-             a try is used to catch the program from breaking if the user inputs something other than an int.
-            finally the print function to print the complete decryption
+        """ prompts user to enter a message and handels the decryption
          """
         print("\nPlease comma separate the message you would like to decrypt")
         while True:
             output = ""
             message = input("\nEnter your message: ").lower()
             new_message = message.split(",")
+            # a try is used to catch the program from breaking if the user inputs something other than an int.
             try:
                 for number in new_message:
+                    #if statement: checks if the input is in the dict's key,
+                    #if it is it will append the dict's value to the empty string enc
                     if int(number) in self.decrypted_dict():
                         output += self.decrypted_dict()[int(number)]
             except ValueError:
+                #the user is asked to comma separate their input
+                # otherwise there's no way to distinguish double digit numbers
+
                 print("\nYour input can't be decrypted completely. "
                       "Please comma separate the input and add numbers only. ")
             else:
