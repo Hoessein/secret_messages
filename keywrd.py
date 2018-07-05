@@ -62,23 +62,15 @@ class Keyword(Cipher):
         print("\nHere is your encryption:", output.upper())
 
     def decrypt(self):
-        """ prompts user to enter a message
-             for loop: to loop through each input
-             if statement: checks if the input is in the dict's key,
-                 if it is it will append the dict's value to the empty string enc
-             finally the print function to print the complete decryption
+        """ prompts user to enter a message and handles the decryption code
          """
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
+            #if statement: checks if the input is in the dict's key,
+            #if it is it will append the dict's value to the empty string enc
             if letter in self.decrypted_dict():
                 output += str(self.decrypted_dict()[letter])
             else:
                 output += letter
         print("\nHere is your decryption:", output.upper())
-
-    def play_again(self):
-        for x in self.encrypted_dict():
-            del x
-        for xx in self.decrypted_dict():
-            del xx
