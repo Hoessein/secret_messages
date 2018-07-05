@@ -46,15 +46,13 @@ class Keyword(Cipher):
         return encrypted_list_copy
 
     def encrypt(self):
-        """ prompts user to enter a message
-             for loop: to loop through each input
-             if statement: checks if the input is in the dict's key,
-                 if it is it will append the dict's value to the empty string enc
-             finally the print function to print the complete encryption
+        """ prompts user to enter a message and handels the encryption
          """
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
+            #if statement: checks if the input is in the dict's key,
+            # if it is it will append the dict's value to the empty string ouput
             if letter in self.encrypted_dict():
                 output += str(self.encrypted_dict()[letter])
             else:
@@ -62,13 +60,13 @@ class Keyword(Cipher):
         print("\nHere is your encryption:", output.upper())
 
     def decrypt(self):
-        """ prompts user to enter a message and handles the decryption code
+        """ prompts user to enter a message and handles the decryption
          """
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
             #if statement: checks if the input is in the dict's key,
-            #if it is it will append the dict's value to the empty string enc
+            #if it is it will append the dict's value to the empty string output
             if letter in self.decrypted_dict():
                 output += str(self.decrypted_dict()[letter])
             else:
