@@ -1,15 +1,21 @@
 from cipher import Cipher
 
+
 class Atbash(Cipher):
 
-    #list comprehensions saved in variables to use later.
-    alphabet_list = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
-    alphabet_list_reversed = [letter for letter in 'zyxwvutsrqponmlkjihgfedcba']
+    def __init__(self):
+        self.alphabet_list = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
+        self.alphabet_list_reversed = [letter for letter in 'zyxwvutsrqponmlkjihgfedcba']
 
-    #dict comprehensions. I can enter the value of the key in one of the dict and the key's value in the other dict.
-    atbash_encrypt_dict = {letter: rev_letter for letter, rev_letter in zip(alphabet_list, alphabet_list_reversed)}
-    atbash_decrypt_dict = {rev_letter: letter for rev_letter, letter in zip(alphabet_list_reversed, alphabet_list)}
+    def encrypted_dict(self):
+        """dict comprehension so i can enter the dict's value's and key's easily."""
+        atbash_encrypt_dict = {letter: number for letter, number in zip(self.alphabet_list, self.alphabet_list_reversed)}
+        return atbash_encrypt_dict
 
+    def decrypted_dict(self):
+        """a simple dict comprehension, love these"""
+        atbash_decrypt_dict = {number: letter for number, letter in zip(self.alphabet_list_reversed, self.alphabet_list)}
+        return atbash_decrypt_dict
 
     def encrypt(self):
         """ prompts user to enter a message
@@ -21,8 +27,8 @@ class Atbash(Cipher):
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
-            if letter in self.atbash_encrypt_dict:
-                output += str(self.atbash_encrypt_dict[letter])
+            if letter in self.encrypted_dict():
+                output += str(self.encrypted_dict()[letter])
             else:
                 output += letter
         print("\nHere is your encryption:", output.upper())
@@ -37,8 +43,8 @@ class Atbash(Cipher):
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
-            if letter in self.atbash_decrypt_dict:
-                output += (str(self.atbash_decrypt_dict[letter]))
+            if letter in self.encrypted_dict():
+                output += (str(self.encrypted_dict()[letter]))
             else:
                 output += letter
         print("\nHere is your decryption:", output.upper())

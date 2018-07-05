@@ -3,16 +3,19 @@ from cipher import Cipher
 
 class Affine(Cipher):
 
-    #list comprehensions saved in variables to use later.
-    alphabet_list = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
-    numbers_list = [number for number in range(0,27)]
+    def __init__(self):
+        self.alphabet_list = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
+        self.numbers_list = [number for number in range(0, 27)]
 
-    #dict comprehensions. I can enter the value of the key in one of the dict and the key's value in the other dict.
-    affine_encrypt_dict = {letter: number for letter, number in zip(alphabet_list, numbers_list)}
-    affine_decrypt_dict = {number: letter for number, letter in zip(numbers_list, alphabet_list)}
+    def encrypted_dict(self):
+        """dict comprehension so i can enter the dict's value's and key's easily."""
+        affine_encrypt_dict = {letter: number for letter, number in zip(self.alphabet_list, self.numbers_list)}
+        return affine_encrypt_dict
 
-
-    enc_list = []
+    def decrypted_dict(self):
+        """a simple dict comprehension, love these"""
+        affine_decrypt_dict = {number: letter for number, letter in zip(self.numbers_list, self.alphabet_list)}
+        return affine_decrypt_dict
 
     def encrypt(self):
         """ prompts user to enter a message
@@ -24,8 +27,8 @@ class Affine(Cipher):
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
-            if letter in self.affine_encrypt_dict:
-                output += str(self.affine_encrypt_dict[letter])
+            if letter in self.encrypted_dict():
+                output += str(self.encrypted_dict()[letter])
                 output += ","
             else:
                 output += letter
@@ -49,8 +52,8 @@ class Affine(Cipher):
             new_message = message.split(",")
             try:
                 for number in new_message:
-                    if int(number) in self.affine_decrypt_dict:
-                        output += self.affine_decrypt_dict[int(number)]
+                    if int(number) in self.decrypted_dict():
+                        output += self.decrypted_dict()[int(number)]
             except ValueError:
                 print("\nYour input can't be decrypted completely. "
                       "Please comma separate the input and add numbers only. ")

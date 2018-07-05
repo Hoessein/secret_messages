@@ -2,11 +2,11 @@ from cipher import Cipher
 
 
 class Keyword(Cipher):
-    # list comprehensions saved in variables to use later.
 
     def __init__(self):
-        self.encrypted_list = self.keyword_pad()
         self.alphabet_list = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
+        self.encrypted_list = self.keyword_pad()
+        print(len(self.encrypted_list))
 
     def encrypted_dict(self):
         """dict comprehension so i can enter the dict's value's and key's easily."""
@@ -27,6 +27,8 @@ class Keyword(Cipher):
             and finally extend encrypted_list_copy to alphabet_list"""
 
         encrypted_list_copy = []
+        a_list = self.alphabet_list[:]
+        print("this is:", a_list)
 
         keyword = input("\nPlease enter a keyword: ")
         holder = ""
@@ -35,11 +37,11 @@ class Keyword(Cipher):
             holder += a
 
         for x in holder:
-            if x in self.alphabet_list:
-                self.alphabet_list.remove(x)
-                encrypted_list_copy.append(x)
+            if x in a_list:
+                print("remove", a_list.remove(x))
+                print("append", encrypted_list_copy.append(x))
 
-        encrypted_list_copy.extend(self.alphabet_list)
+            encrypted_list_copy.extend(a_list)
 
         return encrypted_list_copy
 
@@ -75,5 +77,8 @@ class Keyword(Cipher):
                 output += letter
         print("\nHere is your decryption:", output.upper())
 
-
-
+    def play_again(self):
+        for x in self.encrypted_dict():
+            del x
+        for xx in self.decrypted_dict():
+            del xx
