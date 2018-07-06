@@ -23,10 +23,9 @@ def clear():
 
 def game():
     """this is a function where i run the game logic
-        ask the user if they want to play again
-        if so the secret messages will run again
         otherwise the user is thanked and the program shuts down"""
     run_cipher()
+#  ask the user if they want to play again if so the secret messages will run again
     play_again = input("\nEnter 'Y' if you want to use the program again, Enter anything else to quit. ")
     play_again = play_again.upper()
     clear()
@@ -41,10 +40,11 @@ def game():
 
 def run_cipher():
     """prompts the user which cipher they would like
-        if the user input matches a cipher that particular cipher method will run
-        the while loop will keep prompting the user to pick an available cipher
     """
+#    the while loop will keep prompting the user to pick an available cipher
+
     while True:
+#       if the user input matches a cipher that particular cipher method will run
         which_cipher = input("\nWhich cipher would you like to use?: ")
         if which_cipher == '1':
             run_affine_cipher()
