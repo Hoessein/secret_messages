@@ -6,7 +6,6 @@ class Keyword(Cipher):
     def __init__(self):
         self.alphabet_list = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
         self.encrypted_list = self.keyword_pad()
-        print(len(self.encrypted_list))
 
     def encrypted_dict(self):
         """dict comprehension so i can enter the dict's value's and key's easily."""
@@ -41,7 +40,7 @@ class Keyword(Cipher):
                 encrypted_list_copy.append(letter)
 
         #extend the remainder of the alphabet list to the encrypted_list_copy
-            encrypted_list_copy.extend(a_list)
+        encrypted_list_copy.extend(a_list)
 
         return encrypted_list_copy
 
