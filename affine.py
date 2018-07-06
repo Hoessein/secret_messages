@@ -18,15 +18,13 @@ class Affine(Cipher):
         return affine_decrypt_dict
 
     def encrypt(self):
-        """ prompts user to enter a message
-             for loop: to loop through each input
-             if statement: checks if the input is in the dict's key,
-                 if it is it will append the dict's value to the empty string enc
-             finally the print function to print the complete encryption
+        """ prompts user to enter a message for the encryption
          """
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
+            # if statement: checks if the input is in the dicts keys
+            # if it is it will append the dict's value to the empty string output
             if letter in self.encrypted_dict():
                 output += str(self.encrypted_dict()[letter])
                 output += ","
@@ -52,8 +50,7 @@ class Affine(Cipher):
                         output += self.decrypted_dict()[int(number)]
             except ValueError:
                 #the user is asked to comma separate their input
-                # otherwise there's no way to distinguish double digit numbers
-
+                #otherwise there's no way to distinguish double digit numbers
                 print("\nYour input can't be decrypted completely. "
                       "Please comma separate the input and add numbers only. ")
             else:

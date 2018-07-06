@@ -35,12 +35,12 @@ class Keyword(Cipher):
 
         #in this part i remove each letter from the users input from a_list
         #and also append the input to encrypted_list_copy
-        #then extend the remainder of the alphabet list to the encrypted_list_copy
         for letter in holder:
             if letter in a_list:
                 a_list.remove(letter)
                 encrypted_list_copy.append(letter)
 
+        #extend the remainder of the alphabet list to the encrypted_list_copy
             encrypted_list_copy.extend(a_list)
 
         return encrypted_list_copy

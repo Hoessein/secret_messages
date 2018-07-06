@@ -18,15 +18,13 @@ class Atbash(Cipher):
         return atbash_decrypt_dict
 
     def encrypt(self):
-        """ prompts user to enter a message
-            for loop: to loop through each input
-            if statement: checks if the input is in the dict's key,
-                if it is it will append the dict's value to the empty string enc
-            finally the print function to print the complete encryption
+        """ prompts user to enter a message to encrypt
         """
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
+            #if statement: checks if the input is in the dict's key,
+            #if it is it will append the dict's value to the empty string enc
             if letter in self.encrypted_dict():
                 output += str(self.encrypted_dict()[letter])
             else:
@@ -34,15 +32,13 @@ class Atbash(Cipher):
         print("\nHere is your encryption:", output.upper())
 
     def decrypt(self):
-        """ prompts user to enter a message
-            for loop: to loop through each input
-            if statement: checks if the input is in the dict's key,
-                if it is it will append the dict's value to the empty string enc
-            finally the print function to print the complete decryption
+        """ prompts user to enter a message to decrypt
         """
         output = ""
         message = input("\nEnter your message: ").lower()
         for letter in message:
+            #if statement: checks if the input is in the dict's key,
+            #if it is it will append the dict's value to the empty string enc
             if letter in self.encrypted_dict():
                 output += (str(self.encrypted_dict()[letter]))
             else:
