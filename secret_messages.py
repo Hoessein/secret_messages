@@ -23,7 +23,7 @@ def clear():
 
 def game():
     """this is a function where i run the game logic
-        otherwise the user is thanked and the program shuts down"""
+"""
     run_cipher()
 #  ask the user if they want to play again if so the secret messages will run again
     play_again = input("\nEnter 'Y' if you want to use the program again, Enter anything else to quit. ")

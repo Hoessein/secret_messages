@@ -5,16 +5,16 @@ class Atbash(Cipher):
 
     def __init__(self):
         self.alphabet_list = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
-        self.alphabet_list_reversed = [letter for letter in 'zyxwvutsrqponmlkjihgfedcba']
+        self.alphabet_list_rev = [letter for letter in 'zyxwvutsrqponmlkjihgfedcba']
 
     def encrypted_dict(self):
         """dict comprehension so i can enter the dict's value's and key's easily."""
-        atbash_encrypt_dict = {letter: number for letter, number in zip(self.alphabet_list, self.alphabet_list_reversed)}
+        atbash_encrypt_dict = {letter: number for letter, number in zip(self.alphabet_list, self.alphabet_list_rev)}
         return atbash_encrypt_dict
 
     def decrypted_dict(self):
         """a simple dict comprehension, love these"""
-        atbash_decrypt_dict = {number: letter for number, letter in zip(self.alphabet_list_reversed, self.alphabet_list)}
+        atbash_decrypt_dict = {number: letter for number, letter in zip(self.alphabet_list_rev, self.alphabet_list)}
         return atbash_decrypt_dict
 
     def encrypt(self):
